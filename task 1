@@ -1,0 +1,24 @@
+/*Given an array of integers, return the sum of all 
+the integers that have an even index, multiplied by 
+the integer at the last index.
+
+If the array is empty, you should return 0.*/
+
+const givenArray = [14,4,15,19,5,2,21,27,12,22];
+console.log();
+function arrayTransform(array){
+  let i = 0;
+  let sum  = 0;
+  while(i < array.length){
+    sum  = sum + array[i];
+    i = i + 2;
+  }
+  res = sum * (givenArray.length-1);
+  if(res !== 0){
+    return res;
+  }else{
+    return 0;
+  }
+  
+}
+console.log(arrayTransform(givenArray));
