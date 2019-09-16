@@ -1,22 +1,28 @@
-const numbersA = '1234567';
-const numbersB = [1, 10, 9, 12, 3, 4];
-
-
-let SumOfMultiplied = 0;
-let i = numbersA.length;
-let j = 0;
-while(i >= 0){
-  
-  i--;
-  //console.log(numbersA[i]);
-  if(j <= numbersB.length){
-  console.log(`${numbersA[i]} * ${numbersB[j]}`);
-  j++;
-  }else{
-    j = 0;
-    console.log(`${numbersA[i]} * ${numbersB[j]}`);
+const powerSum = (numbersA, numbersB) =>{
+  let i = numbersA.length;
+  let j = 0;
+  let SumOfMultiplied = 0;
+  while(i > 0){
+    i--;
+    if(j < numbersB.length){
+    SumOfMultiplied = SumOfMultiplied + numbersB[j]*numbersA[i];
+    j++;
+    }else{
+      j = 0;
+      SumOfMultiplied = SumOfMultiplied + numbersB[j]*numbersA[i];
+      j++;
+    }
   }
-  SumOfMultiplied = SumOfMultiplied + numbersB[j]*numbersA[i];
-  
+  return SumOfMultiplied;
 }
-console.log(SumOfMultiplied);
+
+
+const thirt = (num) => {
+  if(num >= 0){
+    const givenB = [1, 10, 9, 12, 3, 4];
+    const givenA = `${num}`;
+    console.log(powerSum(givenA, givenB));
+  }
+}
+
+thirt(1234567);
