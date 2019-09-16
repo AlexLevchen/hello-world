@@ -1,0 +1,22 @@
+const numbersA = '1234567';
+const numbersB = [1, 10, 9, 12, 3, 4];
+
+
+let SumOfMultiplied = 0;
+let i = numbersA.length;
+let j = 0;
+while(i >= 0){
+  
+  i--;
+  //console.log(numbersA[i]);
+  if(j <= numbersB.length){
+  console.log(`${numbersA[i]} * ${numbersB[j]}`);
+  j++;
+  }else{
+    j = 0;
+    console.log(`${numbersA[i]} * ${numbersB[j]}`);
+  }
+  SumOfMultiplied = SumOfMultiplied + numbersB[j]*numbersA[i];
+  
+}
+console.log(SumOfMultiplied);
