@@ -1,4 +1,5 @@
 const powerSum = (numbersA, numbersB) =>{
+  numbersA = `${numbersA}`;
   let i = numbersA.length;
   let j = 0;
   let SumOfMultiplied = 0;
@@ -29,7 +30,8 @@ const thirt = (num) => {
       i++;
     }
     console.log(numArr);
+    console.log(numArr[i]);
   }
 }
 
-thirt(1234567);
+thirt(123456789);
