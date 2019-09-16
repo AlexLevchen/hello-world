@@ -10,21 +10,17 @@ solution('abcdef') // should return ['ab', 'cd', 'ef'] */
 
 const split = (text) => {
   let i = 0;
-  let a = 0;
-  let b = 2;
   let textArray = [];
-  while(i < text.length/2){
-    let arrayPart = [text.slice(a,b)];
+  while(i < text.length){
+    let arrayPart = [text.slice(i,i+2)];
     if(arrayPart[0].length === 2){
       textArray = textArray.concat(arrayPart);
     }else if(arrayPart[0].length === 1){
       textArray = textArray.concat(arrayPart + '_');
     }
-    a = a + 2;
-    b = b + 2;
-    i++;
+    i = i + 2;
   }
   return textArray;
 }
 
-console.log(split('abcdeff'));
+console.log(split('abcdefg'));
