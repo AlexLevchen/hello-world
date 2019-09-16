@@ -1,0 +1,30 @@
+/*Complete the solution so that it splits the string into 
+pairs of two characters. If the string contains an odd 
+number of characters then it should replace the missing 
+second character of the final pair with an underscore ('_').
+
+Examples:
+
+solution('abc') // should return ['ab', 'c_']
+solution('abcdef') // should return ['ab', 'cd', 'ef'] */
+
+const split = (text) => {
+  let i = 0;
+  let a = 0;
+  let b = 2;
+  let textArray = [];
+  while(i < text.length/2){
+    let arrayPart = [text.slice(a,b)];
+    if(arrayPart[0].length === 2){
+      textArray = textArray.concat(arrayPart);
+    }else if(arrayPart[0].length === 1){
+      textArray = textArray.concat(arrayPart + '_');
+    }
+    a = a + 2;
+    b = b + 2;
+    i++;
+  }
+  return textArray;
+}
+
+console.log(split('abcdeff'));
