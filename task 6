@@ -26,6 +26,7 @@ const thirt = (num) => {
     let i = 0;
     while (numArr[i] !== numArr[i-1]){
       numArr = numArr.concat([powerSum(numArr[i], givenB)]);
+      i++;
     }
     console.log(numArr);
   }
