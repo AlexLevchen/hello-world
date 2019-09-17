@@ -22,8 +22,7 @@ const thirt = (num) => {
   if(num >= 0){
     const givenB = [1, 10, 9, 12, 3, 4];
     const givenA = `${num}`;
-    let numArr = [];
-    numArr = [powerSum(givenA, givenB)];
+    let numArr = [powerSum(givenA, givenB)];
     let i = 0;
     while (numArr[i] !== numArr[i-1]){
       numArr = numArr.concat([powerSum(numArr[i], givenB)]);
@@ -34,4 +33,4 @@ const thirt = (num) => {
   }
 }
 
-thirt(123456789);
+thirt(1234567);
