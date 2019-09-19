@@ -5,7 +5,6 @@ helper.page_item_count(0)  # should == 4
 helper.page_item_count(1) # last page - should == 2
 helper.page_item_count(2) # should == -1 since the page is 
 invalid
-
 # page_index takes an item index and returns the page that it 
 belongs on
 helper.page_index(5) # should == 1 (zero based index)
@@ -15,45 +14,38 @@ helper.page_index(-10) # should == -1 because negative
 indexes are invalid*/
 class helper{
   constructor(arrayValues, amountPerPage){
-    this.arrayVal = arrayValues;
+    this.items = arrayValues;
     this.numPerPage = amountPerPage;
   };
   item_count() {
-   return this.arrayVal.length;
+   return this.items.length;
   };
   page_count() {
-    if( Number.isInteger(this.item_count()/this.numPerPage)){
-      return this.page_count = Math.floor(this.item_count()/this.numPerPage);
+    return Math.ceil(this.item_count() / this.numPerPage);
+  }
+  page_item_count(page_index){
+    numPerPage = this.numPerPage;
+    item_count = this.item_count();
+    page_count = this.page_count();
+    if (page_index >= page_count || page_index < 0){
+      return -1;
     }else{
-      return this.page_count = Math.floor(this.item_count()/this.numPerPage)+1;
+      return this.items.slice(page_index * numPerPage, item_count).splice(0, numPerPage).length;
     }
   }
-  page_item_count(num){
-    this.page = num+1;
-    if(this.page < this.page_count()){
-      return page_item_count = this.numPerPage;
-    }else if(this.page > this.page_count){
-      return page_item_count = -1;
-    }else if(this.page == this.page_count){
-      if(this.item_count()%this.numPerPage != 0){
-        return page_item_count = this.item_count()%this.numPerPage;
-      }else{
-        return page_item_count = this.numPerPage;
-      }
+  page_index(obj_index){
+    if (this.item_count() === 0 || obj_index <= 0 || obj_index > this.item_count()){
+      return -1;
     }
-  }
-  page_index(val){
-    this.poosition = val;
-    return page_index = this.page_count();
+    if (obj_index / this.numPerPage === 1){
+      return 0;
+    }
+    return Math.floor((obj_index / this.numPerPage)); 
   }
 }
 
 const PaginationHelper = new helper(['a','b','c','d','e','f'], 4);
-/*let page_count = PaginationHelper.page_count();
-console.log(page_count);
-let item_count = PaginationHelper.item_count();
-console.log(item_count);
-let page_item_count = PaginationHelper.page_item_count(0);
-console.log(page_item_count);*/
-let page_index = PaginationHelper.page_index(4);
-console.log(page_index);
+console.log(PaginationHelper.item_count());
+console.log(PaginationHelper.page_count());
+console.log(PaginationHelper.page_item_count(0));
+console.log(PaginationHelper.page_index(2));
